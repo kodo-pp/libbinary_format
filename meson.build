@@ -1,4 +1,4 @@
-project('libbinary-format', 'cpp', version: '0.0.0', default_options: ['cpp_std=c++17'])
+project('libbinary-format', 'cpp', version: '1.0.0', default_options: ['cpp_std=c++17'])
 
 
 # Project files
