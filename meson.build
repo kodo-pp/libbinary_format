@@ -34,8 +34,8 @@ test_includes = [
 # Library
 # =======
 
-libpex_loader = library(
-    'pex_loader',
+libbinary_format = library(
+    'libbinary_format',
     sources,
     include_directories: includes,
     install: true,
@@ -49,7 +49,7 @@ catch2_test_executable = executable(
     'catch2_test',
     test_sources,
     include_directories: test_includes,
-    link_with: libpex_loader,
+    link_with: libbinary_format,
 )
 
 
@@ -58,3 +58,15 @@ catch2_test_executable = executable(
 
 test('catch2_test_suit', catch2_test_executable)
 install_headers(headers, subdir: 'libbinary_format')
+
+# Pkg-config
+# ==========
+
+pkg = import('pkgconfig')
+pkg.generate(
+    description: 'A small library helping in reading binary formats. Designed specifically for Pyke',
+    filebase: 'libbinary_format',
+    libraries: libbinary_format,
+    name: 'libbinary_format',
+    subdirs: 'include',
+)
